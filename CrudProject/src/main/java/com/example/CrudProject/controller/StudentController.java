@@ -17,14 +17,14 @@ import com.example.CrudProject.service.StudentService;
 
 @Controller
 public class StudentController {
-	@Autowired
+    @Autowired
     private StudentService service;
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
         List<Student> liststudent = service.listAll();
         model.addAttribute("liststudent", liststudent);
-        System.out.print("Get / ");	
+        System.out.print("Get / ");
         return "index";
     }
 
@@ -46,8 +46,9 @@ public class StudentController {
         Student std = service.get(id);
         mav.addObject("student", std);
         return mav;
-        
+
     }
+
     @RequestMapping("/delete/{id}")
     public String deletestudent(@PathVariable(name = "id") int id) {
         service.delete(id);
